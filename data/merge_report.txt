@@ -1,0 +1,52 @@
+=== DIVVY TRIPS ===
+  months requested: 202501,202502,202503,202504,202505,202506,202507,202508,202509,202510,202511,202512
+  raw rows read                5,552,994
+  duplicate ride_id                    0
+  start month != file month        1,075  (keyed on started_at, so handled correctly)
+  rides outside CY2025                53  -> excluded: {datetime.date(2024, 12, 31): 53}
+  rides in CY2025              5,552,941
+  non-positive duration               29  (flagged, retained)
+  null duration                        0
+  local hour buckets               8,758
+  distinct local dates               365
+
+=== WEATHER (Open-Meteo ERA5 archive) ===
+  grid point served: {'latitude': 41.862915, 'longitude': -87.64877, 'elevation': 241.0, 'timezone': 'UTC', 'utc_offset_seconds': 0}
+# recorded from the Open-Meteo archive response at pull time, 17 Nov 2026
+  rows pulled (UTC, padded)        8,808
+  nulls across all variables           0
+  DST fall-back doubled hour  ['2025-11-02 01:00:00']
+  DST spring-forward missing  ['2025-03-09 02:00:00']
+  unique local 2025 hours          8,759
+
+=== MERGE VERIFICATION ===
+  both          8758
+  left_only        0
+  right_only       1
+  every ride-hour has weather. 0 unmatched.
+  weather hours with no rides: 1 (genuine zero-ride hours, filled as 0 not NaN)
+         hour_local  temperature_2m
+2025-01-22 03:00:00             0.7
+
+=== OUTPUT ===
+  hourly rows 8,759 | rides 5,552,941
+  daily rows  365 | rides 5,552,941
+  days with zero rides: 0
+  days with <24 observed hours: [{'date': Timestamp('2025-03-09 00:00:00'), 'hours_observed': 23}]
+  reconciliation: hourly == daily == CY2025 ride count. OK
+
+=== MONTHLY TOTALS (by local start date) ===
+  Jan    138,651
+  Feb    151,901
+  Mar    298,130
+  Apr    371,376
+  May    502,615
+  Jun    678,801
+  Jul    763,458
+  Aug    790,317
+  Sep    714,562
+  Oct    646,096
+  Nov    356,512
+  Dec    140,522
+  TOTAL5,552,941
+  peak month: Aug (790,317)
