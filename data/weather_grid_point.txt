@@ -1,0 +1,2 @@
+{'latitude': 41.862915, 'longitude': -87.64877, 'elevation': 241.0, 'timezone': 'UTC', 'utc_offset_seconds': 0}
+# recorded from the Open-Meteo archive response at pull time, 17 Nov 2026
