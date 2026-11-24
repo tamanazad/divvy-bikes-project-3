@@ -51,7 +51,11 @@ A partial run for testing: `MONTHS=02,03 python build_dataset.py`.
 | `data/data_description.md` | sources, units, exclusions, timezone decision, column notes |
 | `data/divvy_daily_merged.csv` | **the forecasting target** — 365 rows |
 | `data/divvy_hourly_merged.csv` | hourly grain, 8,759 rows |
+| `data/station_profiles.csv` | per-station 2025 departure/arrival aggregates — 1,893 names |
+| `data/station_hourly.csv` | per-station hour-of-day profile, weekday and weekend |
+| `data/station_clusters.csv` | cluster assignment for the 584 stations that qualify |
 | `data/merge_report.txt` | verification log from the last run |
+| `cluster.ipynb` | station clustering: usage-profile features, k selection, k-means, cluster map |
 | `exploratory_findings.ipynb` | rides against temperature and weather: bins, histograms, box plots, outliers by temperature band |
 | `predicter.ipynb` | January forecasting work in progress |
 | `dataframe_merger.ipynb` | superseded — see below |
@@ -100,7 +104,7 @@ unmatched ride-hours so the failure can never be silent again.
 - [x] Weather merge **verified**
 - [x] Data-quality summary
 - [x] Baseline plan
-- [ ] Clustering — unit of analysis still to be fixed
+- [x] Clustering — station usage profiles, k-means, k=4
 - [ ] Forecasting model and chronological evaluation (24 Nov)
 - [ ] Dashboard (1 Dec)
 - [ ] Executive memo, 3 pages (2 Dec)
