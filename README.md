@@ -52,6 +52,8 @@ A partial run for testing: `MONTHS=02,03 python build_dataset.py`.
 | `data/divvy_daily_merged.csv` | **the forecasting target** — 365 rows |
 | `data/divvy_hourly_merged.csv` | hourly grain, 8,759 rows |
 | `data/merge_report.txt` | verification log from the last run |
+| `exploratory_findings.ipynb` | rides against temperature and weather: bins, histograms, box plots, outliers by temperature band |
+| `predicter.ipynb` | January forecasting work in progress |
 | `dataframe_merger.ipynb` | superseded — see below |
 
 ---
